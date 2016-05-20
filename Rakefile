@@ -1,10 +1,11 @@
 require 'open-uri'
-require 'octicons-rails/version'
+require 'octicons/version'
+require 'bundler/gem_tasks'
 
 desc 'download and update octicons'
 task :update do
 
-  system('curl', '-L', '-O', "https://github.com/github/octicons/releases/download/v#{Octicons::Rails::VERSION}/octicons.zip")
+  system('curl', '-L', '-O', "https://github.com/github/octicons/releases/download/v#{Octicons::VERSION}/octicons.zip")
   system('unzip', 'octicons.zip', '-d', 'tmp')
 
   FileUtils.mv Dir['tmp/*.{eot,svg,ttf,woff}'], 'app/assets/fonts'
